@@ -804,7 +804,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Handitin">
-        <EntityTypeShape EntityType="HanditinModel.Class" Width="1.5" PointX="5.625" PointY="2.25" Height="1.5956835937499998" IsExpanded="true" />
+        <EntityTypeShape EntityType="HanditinModel.Class" Width="1.5" PointX="5.625" PointY="2.375" Height="1.5956835937499998" IsExpanded="true" />
         <EntityTypeShape EntityType="HanditinModel.Group" Width="1.5" PointX="5.625" PointY="4.5" Height="2.7494921874999996" IsExpanded="true" />
         <EntityTypeShape EntityType="HanditinModel.Project" Width="1.5" PointX="5.625" PointY="8.375" Height="2.7494921874999996" IsExpanded="true" />
         <EntityTypeShape EntityType="HanditinModel.Score" Width="1.5" PointX="3.25" PointY="11.125" Height="2.5571907552083326" IsExpanded="true" />
@@ -812,10 +812,10 @@
         <EntityTypeShape EntityType="HanditinModel.Submission" Width="1.5" PointX="8.125" PointY="6.25" Height="2.9417936197916674" IsExpanded="true" />
         <EntityTypeShape EntityType="HanditinModel.Teacher" Width="1.5" PointX="3" PointY="8.375" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="HanditinModel.User" Width="1.5" PointX="0.75" PointY="4.625" Height="2.1725878906249996" IsExpanded="true" />
-        <EntityTypeShape EntityType="HanditinModel.Work" Width="1.5" PointX="10.375" PointY="7" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="HanditinModel.Work" Width="1.5" PointX="10.625" PointY="6.5" Height="2.1725878906249996" IsExpanded="true" />
         <AssociationConnector Association="HanditinModel.FK_Student_Class" ManuallyRouted="false">
-          <ConnectorPoint PointX="5.625" PointY="3.047841796875" />
-          <ConnectorPoint PointX="3.75" PointY="3.047841796875" />
+          <ConnectorPoint PointX="5.625" PointY="3.172841796875" />
+          <ConnectorPoint PointX="3.75" PointY="3.172841796875" />
           <ConnectorPoint PointX="3.75" PointY="4.5" />
         </AssociationConnector>
         <AssociationConnector Association="HanditinModel.FK_group_leader_sid" ManuallyRouted="false">
@@ -861,8 +861,8 @@
           <ConnectorPoint PointX="4.5" PointY="6.4803930664062506" />
         </AssociationConnector>
         <AssociationConnector Association="HanditinModel.SubmittedWork" ManuallyRouted="false">
-          <ConnectorPoint PointX="9.625" PointY="8.0862939453125" />
-          <ConnectorPoint PointX="10.375" PointY="8.0862939453125" />
+          <ConnectorPoint PointX="9.625" PointY="7.5862939453125" />
+          <ConnectorPoint PointX="10.625" PointY="7.5862939453125" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
