@@ -8,16 +8,18 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
+[assembly: EdmRelationshipAttribute("HanditinModel", "FK_Student_Class", "Class", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MVCtest.Models.Class), "Student", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCtest.Models.Student), true)]
 [assembly: EdmRelationshipAttribute("HanditinModel", "FK_group_leader_sid", "Student", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MVCtest.Models.Student), "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCtest.Models.Group), true)]
 [assembly: EdmRelationshipAttribute("HanditinModel", "FK_group_student", "Student", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MVCtest.Models.Student), "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCtest.Models.Group), true)]
 [assembly: EdmRelationshipAttribute("HanditinModel", "FK_submission_group", "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MVCtest.Models.Group), "Submission", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCtest.Models.Submission), true)]
@@ -29,7 +31,6 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("HanditinModel", "FK_teacher_user", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MVCtest.Models.User), "Teacher", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MVCtest.Models.Teacher), true)]
 [assembly: EdmRelationshipAttribute("HanditinModel", "Enrol", "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCtest.Models.Group), "Student", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCtest.Models.Student))]
 [assembly: EdmRelationshipAttribute("HanditinModel", "SubmittedWork", "Submission", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCtest.Models.Submission), "Work", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCtest.Models.Work))]
-[assembly: EdmRelationshipAttribute("HanditinModel", "FK_Student_Class", "Class", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MVCtest.Models.Class), "Student", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MVCtest.Models.Student), true)]
 
 #endregion
 
@@ -84,228 +85,229 @@ namespace MVCtest.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Class> Class
+        public ObjectSet<Class> Classes
         {
             get
             {
-                if ((_Class == null))
+                if ((_Classes == null))
                 {
-                    _Class = base.CreateObjectSet<Class>("Class");
+                    _Classes = base.CreateObjectSet<Class>("Classes");
                 }
-                return _Class;
+                return _Classes;
             }
         }
-        private ObjectSet<Class> _Class;
+        private ObjectSet<Class> _Classes;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Group> Group
+        public ObjectSet<Group> Groups
         {
             get
             {
-                if ((_Group == null))
+                if ((_Groups == null))
                 {
-                    _Group = base.CreateObjectSet<Group>("Group");
+                    _Groups = base.CreateObjectSet<Group>("Groups");
                 }
-                return _Group;
+                return _Groups;
             }
         }
-        private ObjectSet<Group> _Group;
+        private ObjectSet<Group> _Groups;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Project> Project
+        public ObjectSet<Project> Projects
         {
             get
             {
-                if ((_Project == null))
+                if ((_Projects == null))
                 {
-                    _Project = base.CreateObjectSet<Project>("Project");
+                    _Projects = base.CreateObjectSet<Project>("Projects");
                 }
-                return _Project;
+                return _Projects;
             }
         }
-        private ObjectSet<Project> _Project;
+        private ObjectSet<Project> _Projects;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Score> Score
+        public ObjectSet<Score> Scores
         {
             get
             {
-                if ((_Score == null))
+                if ((_Scores == null))
                 {
-                    _Score = base.CreateObjectSet<Score>("Score");
+                    _Scores = base.CreateObjectSet<Score>("Scores");
                 }
-                return _Score;
+                return _Scores;
             }
         }
-        private ObjectSet<Score> _Score;
+        private ObjectSet<Score> _Scores;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Student> Student
+        public ObjectSet<Student> Students
         {
             get
             {
-                if ((_Student == null))
+                if ((_Students == null))
                 {
-                    _Student = base.CreateObjectSet<Student>("Student");
+                    _Students = base.CreateObjectSet<Student>("Students");
                 }
-                return _Student;
+                return _Students;
             }
         }
-        private ObjectSet<Student> _Student;
+        private ObjectSet<Student> _Students;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Submission> Submission
+        public ObjectSet<Submission> Submissions
         {
             get
             {
-                if ((_Submission == null))
+                if ((_Submissions == null))
                 {
-                    _Submission = base.CreateObjectSet<Submission>("Submission");
+                    _Submissions = base.CreateObjectSet<Submission>("Submissions");
                 }
-                return _Submission;
+                return _Submissions;
             }
         }
-        private ObjectSet<Submission> _Submission;
+        private ObjectSet<Submission> _Submissions;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Teacher> Teacher
+        public ObjectSet<Teacher> Teachers
         {
             get
             {
-                if ((_Teacher == null))
+                if ((_Teachers == null))
                 {
-                    _Teacher = base.CreateObjectSet<Teacher>("Teacher");
+                    _Teachers = base.CreateObjectSet<Teacher>("Teachers");
                 }
-                return _Teacher;
+                return _Teachers;
             }
         }
-        private ObjectSet<Teacher> _Teacher;
+        private ObjectSet<Teacher> _Teachers;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<User> User
+        public ObjectSet<User> Users
         {
             get
             {
-                if ((_User == null))
+                if ((_Users == null))
                 {
-                    _User = base.CreateObjectSet<User>("User");
+                    _Users = base.CreateObjectSet<User>("Users");
                 }
-                return _User;
+                return _Users;
             }
         }
-        private ObjectSet<User> _User;
+        private ObjectSet<User> _Users;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Work> Work
+        public ObjectSet<Work> Works
         {
             get
             {
-                if ((_Work == null))
+                if ((_Works == null))
                 {
-                    _Work = base.CreateObjectSet<Work>("Work");
+                    _Works = base.CreateObjectSet<Work>("Works");
                 }
-                return _Work;
+                return _Works;
             }
         }
-        private ObjectSet<Work> _Work;
+        private ObjectSet<Work> _Works;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Class EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Classes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToClass(Class @class)
+        public void AddToClasses(Class @class)
         {
-            base.AddObject("Class", @class);
+            base.AddObject("Classes", @class);
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Group EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Groups EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToGroup(Group group)
+        public void AddToGroups(Group group)
         {
-            base.AddObject("Group", group);
+            base.AddObject("Groups", group);
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Project EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Projects EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToProject(Project project)
+        public void AddToProjects(Project project)
         {
-            base.AddObject("Project", project);
+            base.AddObject("Projects", project);
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Score EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Scores EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToScore(Score score)
+        public void AddToScores(Score score)
         {
-            base.AddObject("Score", score);
+            base.AddObject("Scores", score);
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Student EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Students EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToStudent(Student student)
+        public void AddToStudents(Student student)
         {
-            base.AddObject("Student", student);
+            base.AddObject("Students", student);
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Submission EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Submissions EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToSubmission(Submission submission)
+        public void AddToSubmissions(Submission submission)
         {
-            base.AddObject("Submission", submission);
+            base.AddObject("Submissions", submission);
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Teacher EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Teachers EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToTeacher(Teacher teacher)
+        public void AddToTeachers(Teacher teacher)
         {
-            base.AddObject("Teacher", teacher);
+            base.AddObject("Teachers", teacher);
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the User EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Users EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToUser(User user)
+        public void AddToUsers(User user)
         {
-            base.AddObject("User", user);
+            base.AddObject("Users", user);
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Work EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Works EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToWork(Work work)
+        public void AddToWorks(Work work)
         {
-            base.AddObject("Work", work);
+            base.AddObject("Works", work);
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -330,6 +332,7 @@ namespace MVCtest.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -384,6 +387,7 @@ namespace MVCtest.Models
         partial void Onclass_nameChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -394,7 +398,7 @@ namespace MVCtest.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("HanditinModel", "FK_Student_Class", "Student")]
-        public EntityCollection<Student> Student
+        public EntityCollection<Student> Students
         {
             get
             {
@@ -410,6 +414,7 @@ namespace MVCtest.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -442,6 +447,7 @@ namespace MVCtest.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -568,6 +574,7 @@ namespace MVCtest.Models
         partial void Oncreate_timeChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -654,7 +661,7 @@ namespace MVCtest.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("HanditinModel", "FK_submission_group", "Submission")]
-        public EntityCollection<Submission> Submission
+        public EntityCollection<Submission> Submissions
         {
             get
             {
@@ -676,7 +683,7 @@ namespace MVCtest.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("HanditinModel", "Enrol", "Student")]
-        public EntityCollection<Student> Student2
+        public EntityCollection<Student> Students
         {
             get
             {
@@ -692,6 +699,7 @@ namespace MVCtest.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -726,6 +734,7 @@ namespace MVCtest.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -900,6 +909,7 @@ namespace MVCtest.Models
         partial void OntidChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -948,7 +958,7 @@ namespace MVCtest.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("HanditinModel", "FK_submission_project", "Submission")]
-        public EntityCollection<Submission> Submission
+        public EntityCollection<Submission> Submissions
         {
             get
             {
@@ -964,6 +974,7 @@ namespace MVCtest.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -996,6 +1007,7 @@ namespace MVCtest.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1146,6 +1158,7 @@ namespace MVCtest.Models
         partial void OntimeChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1226,6 +1239,7 @@ namespace MVCtest.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1254,6 +1268,7 @@ namespace MVCtest.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1332,6 +1347,7 @@ namespace MVCtest.Models
         partial void OnclassChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1341,8 +1357,46 @@ namespace MVCtest.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("HanditinModel", "FK_Student_Class", "Class")]
+        public Class Class1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Class>("HanditinModel.FK_Student_Class", "Class").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Class>("HanditinModel.FK_Student_Class", "Class").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Class> Class1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Class>("HanditinModel.FK_Student_Class", "Class");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Class>("HanditinModel.FK_Student_Class", "Class", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("HanditinModel", "FK_group_leader_sid", "Group")]
-        public EntityCollection<Group> Group
+        public EntityCollection<Group> Groups
         {
             get
             {
@@ -1364,7 +1418,7 @@ namespace MVCtest.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("HanditinModel", "FK_group_student", "Group")]
-        public EntityCollection<Group> Group1
+        public EntityCollection<Group> Groups1
         {
             get
             {
@@ -1424,7 +1478,7 @@ namespace MVCtest.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("HanditinModel", "Enrol", "Group")]
-        public EntityCollection<Group> Group2
+        public EntityCollection<Group> Groups2
         {
             get
             {
@@ -1438,46 +1492,9 @@ namespace MVCtest.Models
                 }
             }
         }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("HanditinModel", "FK_Student_Class", "Class")]
-        public Class Class1
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Class>("HanditinModel.FK_Student_Class", "Class").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Class>("HanditinModel.FK_Student_Class", "Class").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Class> Class1Reference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Class>("HanditinModel.FK_Student_Class", "Class");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Class>("HanditinModel.FK_Student_Class", "Class", value);
-                }
-            }
-        }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1510,6 +1527,7 @@ namespace MVCtest.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1660,6 +1678,7 @@ namespace MVCtest.Models
         partial void Onsub_timeChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1746,7 +1765,7 @@ namespace MVCtest.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("HanditinModel", "FK_socre_submission", "Score")]
-        public EntityCollection<Score> Score
+        public EntityCollection<Score> Scores
         {
             get
             {
@@ -1768,7 +1787,7 @@ namespace MVCtest.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("HanditinModel", "SubmittedWork", "Work")]
-        public EntityCollection<Work> Work
+        public EntityCollection<Work> Works
         {
             get
             {
@@ -1784,6 +1803,7 @@ namespace MVCtest.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1808,6 +1828,7 @@ namespace MVCtest.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1838,6 +1859,7 @@ namespace MVCtest.Models
         partial void OntidChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1848,7 +1870,7 @@ namespace MVCtest.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("HanditinModel", "FK_project_teacher", "Project")]
-        public EntityCollection<Project> Project
+        public EntityCollection<Project> Projects
         {
             get
             {
@@ -1870,7 +1892,7 @@ namespace MVCtest.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("HanditinModel", "FK_socre_teacher", "Score")]
-        public EntityCollection<Score> Score
+        public EntityCollection<Score> Scores
         {
             get
             {
@@ -1924,6 +1946,7 @@ namespace MVCtest.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1954,6 +1977,7 @@ namespace MVCtest.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2056,6 +2080,7 @@ namespace MVCtest.Models
         partial void OnemailChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2136,6 +2161,7 @@ namespace MVCtest.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2164,6 +2190,7 @@ namespace MVCtest.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2290,6 +2317,7 @@ namespace MVCtest.Models
         partial void OntypeChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2300,7 +2328,7 @@ namespace MVCtest.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("HanditinModel", "SubmittedWork", "Submission")]
-        public EntityCollection<Submission> Submission
+        public EntityCollection<Submission> Submissions
         {
             get
             {
@@ -2316,8 +2344,10 @@ namespace MVCtest.Models
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }

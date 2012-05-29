@@ -14,6 +14,7 @@
     <AssemblyName>MVCtest</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -68,10 +69,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\GuestResponse.cs" />
-    <Compile Include="Models\HanditinMapper.Designer.cs">
+    <Compile Include="Models\Handitin.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HanditinMapper.edmx</DependentUpon>
+      <DependentUpon>Handitin.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -150,13 +151,13 @@
     <Content Include="Views\home\Thanks.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Models\HanditinMapper.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HanditinMapper.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <EntityDeploy Include="Models\Handitin.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Handitin.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
