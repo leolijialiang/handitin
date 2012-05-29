@@ -1,0 +1,7 @@
+d:\dotnetspace\MVCtest\MVCtest\bin\MVCtest.dll
+d:\dotnetspace\MVCtest\MVCtest\bin\MVCtest.pdb
+d:\dotnetspace\MVCtest\MVCtest\bin\EntityFramework.dll
+d:\dotnetspace\MVCtest\MVCtest\bin\EntityFramework.xml
+d:\dotnetspace\MVCtest\MVCtest\obj\Debug\ResolveAssemblyReference.cache
+d:\dotnetspace\MVCtest\MVCtest\obj\Debug\MVCtest.dll
+d:\dotnetspace\MVCtest\MVCtest\obj\Debug\MVCtest.pdb

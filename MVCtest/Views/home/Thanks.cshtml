@@ -1,0 +1,24 @@
+﻿@model MVCtest.Models.GuestResponse
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Thanks</title>
+</head>
+<body>
+    <div>
+      <h1>Thanks, @Model.Name!</h1>
+      @if (Model.WillAttend ==true){
+          @:It's great that you're coming. the drink are alreay in the fridge!
+          }else{
+          @:Sorry to hear that you can't make it, but thanks for letting us know.
+          }
+            
+    </div>
+</body>
+</html>
