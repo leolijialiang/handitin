@@ -1,0 +1,7 @@
+D:\allenli\handitin\handitin\bin\MVCtest.dll
+D:\allenli\handitin\handitin\bin\MVCtest.pdb
+D:\allenli\handitin\handitin\bin\EntityFramework.dll
+D:\allenli\handitin\handitin\bin\EntityFramework.xml
+D:\allenli\handitin\handitin\obj\Debug\ResolveAssemblyReference.cache
+D:\allenli\handitin\handitin\obj\Debug\MVCtest.dll
+D:\allenli\handitin\handitin\obj\Debug\MVCtest.pdb

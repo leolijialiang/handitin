@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCtest", "MVCtest\MVCtest.csproj", "{787DBB64-0124-448F-A89C-D59AC7CD62DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "handitin", "handitin\handitin.csproj", "{787DBB64-0124-448F-A89C-D59AC7CD62DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

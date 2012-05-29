@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HanditinModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="HanditinEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Class" EntityType="HanditinModel.Class" />
+    <EntitySet Name="Group" EntityType="HanditinModel.Group" />
+    <EntitySet Name="Project" EntityType="HanditinModel.Project" />
+    <EntitySet Name="Score" EntityType="HanditinModel.Score" />
+    <EntitySet Name="Student" EntityType="HanditinModel.Student" />
+    <EntitySet Name="Submission" EntityType="HanditinModel.Submission" />
+    <EntitySet Name="Teacher" EntityType="HanditinModel.Teacher" />
+    <EntitySet Name="User" EntityType="HanditinModel.User" />
+    <EntitySet Name="Work" EntityType="HanditinModel.Work" />
+    <AssociationSet Name="FK_group_leader_sid" Association="HanditinModel.FK_group_leader_sid">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Group" EntitySet="Group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_group_student" Association="HanditinModel.FK_group_student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Group" EntitySet="Group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_submission_group" Association="HanditinModel.FK_submission_group">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="Submission" EntitySet="Submission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_project_teacher" Association="HanditinModel.FK_project_teacher">
+      <End Role="Teacher" EntitySet="Teacher" />
+      <End Role="Project" EntitySet="Project" />
+    </AssociationSet>
+    <AssociationSet Name="FK_submission_project" Association="HanditinModel.FK_submission_project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="Submission" EntitySet="Submission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_socre_submission" Association="HanditinModel.FK_socre_submission">
+      <End Role="Submission" EntitySet="Submission" />
+      <End Role="Score" EntitySet="Score" />
+    </AssociationSet>
+    <AssociationSet Name="FK_socre_teacher" Association="HanditinModel.FK_socre_teacher">
+      <End Role="Teacher" EntitySet="Teacher" />
+      <End Role="Score" EntitySet="Score" />
+    </AssociationSet>
+    <AssociationSet Name="FK_student_user" Association="HanditinModel.FK_student_user">
+      <End Role="User" EntitySet="User" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_teacher_user" Association="HanditinModel.FK_teacher_user">
+      <End Role="User" EntitySet="User" />
+      <End Role="Teacher" EntitySet="Teacher" />
+    </AssociationSet>
+    <AssociationSet Name="Enrol" Association="HanditinModel.Enrol">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="SubmittedWork" Association="HanditinModel.SubmittedWork">
+      <End Role="Submission" EntitySet="Submission" />
+      <End Role="Work" EntitySet="Work" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Class" Association="HanditinModel.FK_Student_Class">
+      <End Role="Class" EntitySet="Class" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="cid" />
+    </Key>
+    <Property Name="cid" Type="Int32" Nullable="false" />
+    <Property Name="class_name" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="Student" Relationship="HanditinModel.FK_Student_Class" FromRole="Class" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="gid" />
+    </Key>
+    <Property Name="gid" Type="Int32" Nullable="false" />
+    <Property Name="leader_sid" Type="Int32" Nullable="false" />
+    <Property Name="creator_sid" Type="Int32" Nullable="false" />
+    <Property Name="gname" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="create_time" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Student" Relationship="HanditinModel.FK_group_leader_sid" FromRole="Group" ToRole="Student" />
+    <NavigationProperty Name="Student1" Relationship="HanditinModel.FK_group_student" FromRole="Group" ToRole="Student" />
+    <NavigationProperty Name="Submission" Relationship="HanditinModel.FK_submission_group" FromRole="Group" ToRole="Submission" />
+    <NavigationProperty Name="Student2" Relationship="HanditinModel.Enrol" FromRole="Group" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="pid" />
+    </Key>
+    <Property Name="pid" Type="Int32" Nullable="false" />
+    <Property Name="pname" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="link" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="due" Type="DateTime" />
+    <Property Name="create_time" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="tid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Teacher" Relationship="HanditinModel.FK_project_teacher" FromRole="Project" ToRole="Teacher" />
+    <NavigationProperty Name="Submission" Relationship="HanditinModel.FK_submission_project" FromRole="Project" ToRole="Submission" />
+  </EntityType>
+  <EntityType Name="Score">
+    <Key>
+      <PropertyRef Name="gradeid" />
+    </Key>
+    <Property Name="gradeid" Type="Int32" Nullable="false" />
+    <Property Name="sub_id" Type="Int32" Nullable="false" />
+    <Property Name="tid" Type="Int32" Nullable="false" />
+    <Property Name="score1" Type="Double" Nullable="false" />
+    <Property Name="comment" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="time" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Submission" Relationship="HanditinModel.FK_socre_submission" FromRole="Score" ToRole="Submission" />
+    <NavigationProperty Name="Teacher" Relationship="HanditinModel.FK_socre_teacher" FromRole="Score" ToRole="Teacher" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="sid" />
+    </Key>
+    <Property Name="sid" Type="Int32" Nullable="false" />
+    <Property Name="major" Type="Int32" Nullable="false" />
+    <Property Name="class" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Group" Relationship="HanditinModel.FK_group_leader_sid" FromRole="Student" ToRole="Group" />
+    <NavigationProperty Name="Group1" Relationship="HanditinModel.FK_group_student" FromRole="Student" ToRole="Group" />
+    <NavigationProperty Name="User" Relationship="HanditinModel.FK_student_user" FromRole="Student" ToRole="User" />
+    <NavigationProperty Name="Group2" Relationship="HanditinModel.Enrol" FromRole="Student" ToRole="Group" />
+    <NavigationProperty Name="Class1" Relationship="HanditinModel.FK_Student_Class" FromRole="Student" ToRole="Class" />
+  </EntityType>
+  <EntityType Name="Submission">
+    <Key>
+      <PropertyRef Name="sub_id" />
+    </Key>
+    <Property Name="sub_id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="gid" Type="Int32" Nullable="false" />
+    <Property Name="pid" Type="Int32" Nullable="false" />
+    <Property Name="sub_time" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Group" Relationship="HanditinModel.FK_submission_group" FromRole="Submission" ToRole="Group" />
+    <NavigationProperty Name="Project" Relationship="HanditinModel.FK_submission_project" FromRole="Submission" ToRole="Project" />
+    <NavigationProperty Name="Score" Relationship="HanditinModel.FK_socre_submission" FromRole="Submission" ToRole="Score" />
+    <NavigationProperty Name="Work" Relationship="HanditinModel.SubmittedWork" FromRole="Submission" ToRole="Work" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="tid" />
+    </Key>
+    <Property Name="tid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Project" Relationship="HanditinModel.FK_project_teacher" FromRole="Teacher" ToRole="Project" />
+    <NavigationProperty Name="Score" Relationship="HanditinModel.FK_socre_teacher" FromRole="Teacher" ToRole="Score" />
+    <NavigationProperty Name="User" Relationship="HanditinModel.FK_teacher_user" FromRole="Teacher" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="uid" />
+    </Key>
+    <Property Name="uid" Type="Int32" Nullable="false" />
+    <Property Name="uname" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="upass" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="email" Type="Binary" Nullable="false" MaxLength="80" FixedLength="false" />
+    <NavigationProperty Name="Student" Relationship="HanditinModel.FK_student_user" FromRole="User" ToRole="Student" />
+    <NavigationProperty Name="Teacher" Relationship="HanditinModel.FK_teacher_user" FromRole="User" ToRole="Teacher" />
+  </EntityType>
+  <EntityType Name="Work">
+    <Key>
+      <PropertyRef Name="wid" />
+    </Key>
+    <Property Name="wid" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="hyperlink" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="type" Type="Int32" />
+    <NavigationProperty Name="Submission" Relationship="HanditinModel.SubmittedWork" FromRole="Work" ToRole="Submission" />
+  </EntityType>
+  <Association Name="FK_group_leader_sid">
+    <End Role="Student" Type="HanditinModel.Student" Multiplicity="1" />
+    <End Role="Group" Type="HanditinModel.Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="sid" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="leader_sid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_group_student">
+    <End Role="Student" Type="HanditinModel.Student" Multiplicity="1" />
+    <End Role="Group" Type="HanditinModel.Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="sid" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="creator_sid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_submission_group">
+    <End Role="Group" Type="HanditinModel.Group" Multiplicity="1" />
+    <End Role="Submission" Type="HanditinModel.Submission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="gid" />
+      </Principal>
+      <Dependent Role="Submission">
+        <PropertyRef Name="gid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_project_teacher">
+    <End Role="Teacher" Type="HanditinModel.Teacher" Multiplicity="1" />
+    <End Role="Project" Type="HanditinModel.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="tid" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="tid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_submission_project">
+    <End Role="Project" Type="HanditinModel.Project" Multiplicity="1" />
+    <End Role="Submission" Type="HanditinModel.Submission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="Submission">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_socre_submission">
+    <End Role="Submission" Type="HanditinModel.Submission" Multiplicity="1" />
+    <End Role="Score" Type="HanditinModel.Score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Submission">
+        <PropertyRef Name="sub_id" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="sub_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_socre_teacher">
+    <End Role="Teacher" Type="HanditinModel.Teacher" Multiplicity="1" />
+    <End Role="Score" Type="HanditinModel.Score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="tid" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="tid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_student_user">
+    <End Role="User" Type="HanditinModel.User" Multiplicity="1" />
+    <End Role="Student" Type="HanditinModel.Student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="uid" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="sid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_teacher_user">
+    <End Role="User" Type="HanditinModel.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Teacher" Type="HanditinModel.Teacher" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="uid" />
+      </Principal>
+      <Dependent Role="Teacher">
+        <PropertyRef Name="tid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Enrol">
+    <End Role="Group" Type="HanditinModel.Group" Multiplicity="*" />
+    <End Role="Student" Type="HanditinModel.Student" Multiplicity="*" />
+  </Association>
+  <Association Name="SubmittedWork">
+    <End Role="Submission" Type="HanditinModel.Submission" Multiplicity="*" />
+    <End Role="Work" Type="HanditinModel.Work" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Student_Class">
+    <End Type="HanditinModel.Class" Role="Class" Multiplicity="1" />
+    <End Type="HanditinModel.Student" Role="Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="cid" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="class" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

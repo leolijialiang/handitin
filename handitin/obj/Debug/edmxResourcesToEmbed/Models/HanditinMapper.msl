@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HanditinModelStoreContainer" CdmEntityContainer="HanditinEntities">
+    <EntitySetMapping Name="Class">
+      <EntityTypeMapping TypeName="HanditinModel.Class">
+        <MappingFragment StoreEntitySet="Class">
+          <ScalarProperty Name="cid" ColumnName="cid" />
+          <ScalarProperty Name="class_name" ColumnName="class_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Group">
+      <EntityTypeMapping TypeName="HanditinModel.Group">
+        <MappingFragment StoreEntitySet="Group">
+          <ScalarProperty Name="gid" ColumnName="gid" />
+          <ScalarProperty Name="leader_sid" ColumnName="leader_sid" />
+          <ScalarProperty Name="creator_sid" ColumnName="creator_sid" />
+          <ScalarProperty Name="gname" ColumnName="gname" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Project">
+      <EntityTypeMapping TypeName="HanditinModel.Project">
+        <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="pname" ColumnName="pname" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="due" ColumnName="due" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="tid" ColumnName="tid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Score">
+      <EntityTypeMapping TypeName="HanditinModel.Score">
+        <MappingFragment StoreEntitySet="Score">
+          <ScalarProperty Name="gradeid" ColumnName="gradeid" />
+          <ScalarProperty Name="sub_id" ColumnName="sub_id" />
+          <ScalarProperty Name="tid" ColumnName="tid" />
+          <ScalarProperty Name="score1" ColumnName="score" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="time" ColumnName="time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student">
+      <EntityTypeMapping TypeName="HanditinModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="sid" ColumnName="sid" />
+          <ScalarProperty Name="major" ColumnName="major" />
+          <ScalarProperty Name="class" ColumnName="class" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Submission">
+      <EntityTypeMapping TypeName="HanditinModel.Submission">
+        <MappingFragment StoreEntitySet="Submission">
+          <ScalarProperty Name="sub_id" ColumnName="sub_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="gid" ColumnName="gid" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="sub_time" ColumnName="sub_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teacher">
+      <EntityTypeMapping TypeName="HanditinModel.Teacher">
+        <MappingFragment StoreEntitySet="Teacher">
+          <ScalarProperty Name="tid" ColumnName="tid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="HanditinModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="uid" ColumnName="uid" />
+          <ScalarProperty Name="uname" ColumnName="uname" />
+          <ScalarProperty Name="upass" ColumnName="upass" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Work">
+      <EntityTypeMapping TypeName="HanditinModel.Work">
+        <MappingFragment StoreEntitySet="Work">
+          <ScalarProperty Name="wid" ColumnName="wid" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="hyperlink" ColumnName="hyperlink" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Enrol" TypeName="HanditinModel.Enrol" StoreEntitySet="Enrol">
+      <EndProperty Name="Group">
+        <ScalarProperty Name="gid" ColumnName="gid" />
+      </EndProperty>
+      <EndProperty Name="Student">
+        <ScalarProperty Name="sid" ColumnName="sid" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SubmittedWork" TypeName="HanditinModel.SubmittedWork" StoreEntitySet="SubmittedWork">
+      <EndProperty Name="Submission">
+        <ScalarProperty Name="sub_id" ColumnName="sub_id" />
+      </EndProperty>
+      <EndProperty Name="Work">
+        <ScalarProperty Name="wid" ColumnName="wid" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

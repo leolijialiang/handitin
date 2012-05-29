@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HanditinModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="HanditinModelStoreContainer">
+    <EntitySet Name="Class" EntityType="HanditinModel.Store.Class" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Enrol" EntityType="HanditinModel.Store.Enrol" store:Type="Tables" store:Schema="dbo" store:Name="Enrol">
+      <DefiningQuery>SELECT 
+      [Enrol].[gid] AS [gid], 
+      [Enrol].[sid] AS [sid]
+      FROM [dbo].[Enrol] AS [Enrol]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Group" EntityType="HanditinModel.Store.Group" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Project" EntityType="HanditinModel.Store.Project" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Score" EntityType="HanditinModel.Store.Score" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Student" EntityType="HanditinModel.Store.Student" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Submission" EntityType="HanditinModel.Store.Submission" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SubmittedWork" EntityType="HanditinModel.Store.SubmittedWork" store:Type="Tables" store:Schema="dbo" store:Name="SubmittedWork">
+      <DefiningQuery>SELECT 
+      [SubmittedWork].[wid] AS [wid], 
+      [SubmittedWork].[sub_id] AS [sub_id]
+      FROM [dbo].[SubmittedWork] AS [SubmittedWork]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Teacher" EntityType="HanditinModel.Store.Teacher" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="HanditinModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Work" EntityType="HanditinModel.Store.Work" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_enrol_group" Association="HanditinModel.Store.FK_enrol_group">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="Enrol" EntitySet="Enrol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_enrol_student" Association="HanditinModel.Store.FK_enrol_student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Enrol" EntitySet="Enrol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_group_leader_sid" Association="HanditinModel.Store.FK_group_leader_sid">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Group" EntitySet="Group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_group_student" Association="HanditinModel.Store.FK_group_student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Group" EntitySet="Group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_project_teacher" Association="HanditinModel.Store.FK_project_teacher">
+      <End Role="Teacher" EntitySet="Teacher" />
+      <End Role="Project" EntitySet="Project" />
+    </AssociationSet>
+    <AssociationSet Name="FK_socre_submission" Association="HanditinModel.Store.FK_socre_submission">
+      <End Role="Submission" EntitySet="Submission" />
+      <End Role="Score" EntitySet="Score" />
+    </AssociationSet>
+    <AssociationSet Name="FK_socre_teacher" Association="HanditinModel.Store.FK_socre_teacher">
+      <End Role="Teacher" EntitySet="Teacher" />
+      <End Role="Score" EntitySet="Score" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Class" Association="HanditinModel.Store.FK_Student_Class">
+      <End Role="Class" EntitySet="Class" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_student_user" Association="HanditinModel.Store.FK_student_user">
+      <End Role="User" EntitySet="User" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_submission_group" Association="HanditinModel.Store.FK_submission_group">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="Submission" EntitySet="Submission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_submission_project" Association="HanditinModel.Store.FK_submission_project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="Submission" EntitySet="Submission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_submitted_work_submission" Association="HanditinModel.Store.FK_submitted_work_submission">
+      <End Role="Submission" EntitySet="Submission" />
+      <End Role="SubmittedWork" EntitySet="SubmittedWork" />
+    </AssociationSet>
+    <AssociationSet Name="FK_submitted_work_work" Association="HanditinModel.Store.FK_submitted_work_work">
+      <End Role="Work" EntitySet="Work" />
+      <End Role="SubmittedWork" EntitySet="SubmittedWork" />
+    </AssociationSet>
+    <AssociationSet Name="FK_teacher_user" Association="HanditinModel.Store.FK_teacher_user">
+      <End Role="User" EntitySet="User" />
+      <End Role="Teacher" EntitySet="Teacher" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="cid" />
+    </Key>
+    <Property Name="cid" Type="int" Nullable="false" />
+    <Property Name="class_name" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Handitin.dbo.Enrol' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Enrol">
+    <Key>
+      <PropertyRef Name="gid" />
+      <PropertyRef Name="sid" />
+    </Key>
+    <Property Name="gid" Type="int" Nullable="false" />
+    <Property Name="sid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="gid" />
+    </Key>
+    <Property Name="gid" Type="int" Nullable="false" />
+    <Property Name="leader_sid" Type="int" Nullable="false" />
+    <Property Name="creator_sid" Type="int" Nullable="false" />
+    <Property Name="gname" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="create_time" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="pid" />
+    </Key>
+    <Property Name="pid" Type="int" Nullable="false" />
+    <Property Name="pname" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="description" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="link" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="due" Type="date" />
+    <Property Name="create_time" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="tid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Score">
+    <Key>
+      <PropertyRef Name="gradeid" />
+    </Key>
+    <Property Name="gradeid" Type="int" Nullable="false" />
+    <Property Name="sub_id" Type="int" Nullable="false" />
+    <Property Name="tid" Type="int" Nullable="false" />
+    <Property Name="score" Type="float" Nullable="false" />
+    <Property Name="comment" Type="varchar" MaxLength="200" />
+    <Property Name="time" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="sid" />
+    </Key>
+    <Property Name="sid" Type="int" Nullable="false" />
+    <Property Name="major" Type="int" Nullable="false" />
+    <Property Name="class" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Submission">
+    <Key>
+      <PropertyRef Name="sub_id" />
+    </Key>
+    <Property Name="sub_id" Type="int" Nullable="false" />
+    <Property Name="title" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="description" Type="varchar" MaxLength="200" />
+    <Property Name="gid" Type="int" Nullable="false" />
+    <Property Name="pid" Type="int" Nullable="false" />
+    <Property Name="sub_time" Type="date" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Handitin.dbo.SubmittedWork' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="SubmittedWork">
+    <Key>
+      <PropertyRef Name="wid" />
+      <PropertyRef Name="sub_id" />
+    </Key>
+    <Property Name="wid" Type="int" Nullable="false" />
+    <Property Name="sub_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="tid" />
+    </Key>
+    <Property Name="tid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="uid" />
+    </Key>
+    <Property Name="uid" Type="int" Nullable="false" />
+    <Property Name="uname" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="upass" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="email" Type="varbinary" Nullable="false" MaxLength="80" />
+  </EntityType>
+  <EntityType Name="Work">
+    <Key>
+      <PropertyRef Name="wid" />
+    </Key>
+    <Property Name="wid" Type="int" Nullable="false" />
+    <Property Name="title" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="description" Type="varchar" MaxLength="200" />
+    <Property Name="hyperlink" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="type" Type="int" />
+  </EntityType>
+  <Association Name="FK_enrol_group">
+    <End Role="Group" Type="HanditinModel.Store.Group" Multiplicity="1" />
+    <End Role="Enrol" Type="HanditinModel.Store.Enrol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="gid" />
+      </Principal>
+      <Dependent Role="Enrol">
+        <PropertyRef Name="gid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_enrol_student">
+    <End Role="Student" Type="HanditinModel.Store.Student" Multiplicity="1" />
+    <End Role="Enrol" Type="HanditinModel.Store.Enrol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="sid" />
+      </Principal>
+      <Dependent Role="Enrol">
+        <PropertyRef Name="sid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_group_leader_sid">
+    <End Role="Student" Type="HanditinModel.Store.Student" Multiplicity="1" />
+    <End Role="Group" Type="HanditinModel.Store.Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="sid" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="leader_sid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_group_student">
+    <End Role="Student" Type="HanditinModel.Store.Student" Multiplicity="1" />
+    <End Role="Group" Type="HanditinModel.Store.Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="sid" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="creator_sid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_project_teacher">
+    <End Role="Teacher" Type="HanditinModel.Store.Teacher" Multiplicity="1" />
+    <End Role="Project" Type="HanditinModel.Store.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="tid" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="tid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_socre_submission">
+    <End Role="Submission" Type="HanditinModel.Store.Submission" Multiplicity="1" />
+    <End Role="Score" Type="HanditinModel.Store.Score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Submission">
+        <PropertyRef Name="sub_id" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="sub_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_socre_teacher">
+    <End Role="Teacher" Type="HanditinModel.Store.Teacher" Multiplicity="1" />
+    <End Role="Score" Type="HanditinModel.Store.Score" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="tid" />
+      </Principal>
+      <Dependent Role="Score">
+        <PropertyRef Name="tid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Class">
+    <End Role="Class" Type="HanditinModel.Store.Class" Multiplicity="1" />
+    <End Role="Student" Type="HanditinModel.Store.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="cid" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="class" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_student_user">
+    <End Role="User" Type="HanditinModel.Store.User" Multiplicity="1" />
+    <End Role="Student" Type="HanditinModel.Store.Student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="uid" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="sid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_submission_group">
+    <End Role="Group" Type="HanditinModel.Store.Group" Multiplicity="1" />
+    <End Role="Submission" Type="HanditinModel.Store.Submission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="gid" />
+      </Principal>
+      <Dependent Role="Submission">
+        <PropertyRef Name="gid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_submission_project">
+    <End Role="Project" Type="HanditinModel.Store.Project" Multiplicity="1" />
+    <End Role="Submission" Type="HanditinModel.Store.Submission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="Submission">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_submitted_work_submission">
+    <End Role="Submission" Type="HanditinModel.Store.Submission" Multiplicity="1" />
+    <End Role="SubmittedWork" Type="HanditinModel.Store.SubmittedWork" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Submission">
+        <PropertyRef Name="sub_id" />
+      </Principal>
+      <Dependent Role="SubmittedWork">
+        <PropertyRef Name="sub_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_submitted_work_work">
+    <End Role="Work" Type="HanditinModel.Store.Work" Multiplicity="1" />
+    <End Role="SubmittedWork" Type="HanditinModel.Store.SubmittedWork" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Work">
+        <PropertyRef Name="wid" />
+      </Principal>
+      <Dependent Role="SubmittedWork">
+        <PropertyRef Name="wid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_teacher_user">
+    <End Role="User" Type="HanditinModel.Store.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Teacher" Type="HanditinModel.Store.Teacher" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="uid" />
+      </Principal>
+      <Dependent Role="Teacher">
+        <PropertyRef Name="tid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+      warning 6013: The table/view 'Handitin.dbo.Major' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="Major">
+        <Property Name="mid" Type="int" />
+        <Property Name="major_name" Type="varbinary" MaxLength="50" />
+      </EntityType>-->
+</Schema>
